@@ -10,13 +10,12 @@ ZIP_FILE = os.path.join(DESKTOP_DIR, "Placement-Ready-Platform.zip")
 
 print("Copying project to Desktop for easy access & GitHub upload...")
 
-# Create desktop folder
 if os.path.exists(OUTPUT_DIR):
     shutil.rmtree(OUTPUT_DIR)
 
 shutil.copytree(BASE_DIR, OUTPUT_DIR, ignore=shutil.ignore_patterns('*.pyc', '__pycache__', '.git'))
 
-# Create ZIP archive
+
 with zipfile.ZipFile(ZIP_FILE, 'w', zipfile.ZIP_DEFLATED) as zipf:
     for root, dirs, files in os.walk(BASE_DIR):
         if '__pycache__' in root:
